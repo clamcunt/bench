@@ -1,0 +1,22 @@
+{
+  "task": "Implement and verify a Luhn checksum validator in Rust.",
+  "function_signature": "pub fn is_valid_luhn(input: &str) -> bool",
+  "rules": [
+    "Ignore ASCII spaces (' ') anywhere in the input string.",
+    "Return false if the cleaned string is empty or contains any non-ASCII-digit characters.",
+    "Double every second digit starting from the right; if doubled > 9, subtract 9.",
+    "Return true if and only if the sum of all processed digits modulo 10 equals 0.",
+    "Include thorough unit tests in src/lib.rs covering valid numbers, spaced numbers, invalid checksums, empty/whitespace strings, and non-digit characters."
+  ],
+  "qc_subagent": {
+    "required_system_role": "Strict Rust Security & QA Auditor",
+    "required_signoff_token": "QC_VERIFIED_PASS",
+    "review_instructions": "Audit both src/lib.rs (implementation AND unit tests) and README.md. Only output QC_VERIFIED_PASS if every item in the checklist passes completely; otherwise list the exact failures and output QC_FAILED.",
+    "checklist": [
+      "Verify `pub fn is_valid_luhn(input: &str) -> bool` matches the exact signature and Luhn rules.",
+      "Verify zero `.unwrap()`, `.expect()`, or `panic!()` calls on user input.",
+      "Verify `src/lib.rs` includes a `#[cfg(test)]` module testing valid numbers, spaced numbers, bad checksums, empty/whitespace-only inputs, and non-digit characters.",
+      "Verify `README.md` exists, is clear, and includes a working Rust usage example."
+    ]
+  }
+}
